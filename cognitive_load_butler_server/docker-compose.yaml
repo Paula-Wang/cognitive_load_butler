@@ -1,0 +1,44 @@
+services:
+  # Development services
+  postgres:
+    image: pgvector/pgvector:pg16
+    ports:
+      - "8090:5432"
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_DB: cognitive_load_butler
+      POSTGRES_PASSWORD: "kPyRPgSY563wZXoaZiJsqYfU2r-Q04XK"
+    volumes:
+      - cognitive_load_butler_data:/var/lib/postgresql/data
+
+  redis:
+    image: redis:6.2.6
+    ports:
+      - "8091:6379"
+    command: redis-server --requirepass "vRqJFtKmVgmRgvS7peYlRTMIUGgUK7Fw"
+    environment:
+      - REDIS_REPLICATION_MODE=master
+
+  # Test services
+  postgres_test:
+    image: pgvector/pgvector:pg16
+    ports:
+      - "9090:5432"
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_DB: cognitive_load_butler_test
+      POSTGRES_PASSWORD: "YiWxV5JBREs6W_ORz46Kp3oCW0mMTw1e"
+    volumes:
+      - cognitive_load_butler_test_data:/var/lib/postgresql/data
+
+  redis_test:
+    image: redis:6.2.6
+    ports:
+      - "9091:6379"
+    command: redis-server --requirepass "6gFvMKTb4Bb1V8MfWkvNqDs4GM5zxh8A"
+    environment:
+      - REDIS_REPLICATION_MODE=master
+
+volumes:
+  cognitive_load_butler_data:
+  cognitive_load_butler_test_data:

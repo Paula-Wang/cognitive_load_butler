@@ -1,0 +1,17 @@
+emailIdp:
+  - login:
+  - startRegistration:
+  - verifyRegistrationCode:
+  - finishRegistration:
+  - startPasswordReset:
+  - verifyPasswordResetCode:
+  - finishPasswordReset:
+jwtRefresh:
+  - refreshAccessToken:
+butler:
+  - createTask:
+  - getAllTasks:
+  - getTodayFocus:
+  - seedDemoTasks:
+greeting:
+  - hello:

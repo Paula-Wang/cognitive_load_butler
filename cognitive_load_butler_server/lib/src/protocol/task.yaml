@@ -1,0 +1,10 @@
+class: Task
+table: task
+
+fields:
+  title: String
+  importance: int
+  mentalLoad: int
+  deadline: DateTime?
+  flexible: bool
+

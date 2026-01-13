@@ -1,0 +1,6 @@
+class: TaskFocus
+fields:
+  task: Task
+  score: int
+  reason: String
+
