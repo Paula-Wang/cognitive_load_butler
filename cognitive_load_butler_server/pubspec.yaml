@@ -10,7 +10,10 @@ dependencies:
   serverpod: 3.1.1
   serverpod_auth_idp_server: 3.1.1
   cognitive_load_butler_client:
-    path: ../cognitive_load_butler_client
+    git:
+      url: https://github.com/Paula-Wang/cognitive_load_butler.git
+      path: cognitive_load_butler_client
+      ref: main
 
 dev_dependencies:
   lints: '>=3.0.0 <7.0.0'
