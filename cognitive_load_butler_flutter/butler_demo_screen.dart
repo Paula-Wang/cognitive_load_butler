@@ -14,13 +14,33 @@ class _ButlerDemoScreenState extends State<ButlerDemoScreen> {
   Future<void> seedAndLoad() async {
     setState(() => loading = true);
 
-    await client.butler.seedDemoTasks();
-    final result = await client.butler.getTodayFocus();
+    try {
+      // Optional: keep for now, safe with try/catch
+      await client.butler.seedDemoTasks();
 
-    setState(() {
-      focusList = result;
-      loading = false;
-    });
+      final result = await client.butler.getTodayFocus();
+
+      if (mounted) {
+        setState(() {
+          focusList = result;
+        });
+      }
+    } catch (e, stack) {
+      debugPrint('Error loading focus: $e');
+      debugPrintStack(stackTrace: stack);
+
+      if (mounted) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          const SnackBar(
+            content: Text('Failed to generate focus. Please try again.'),
+          ),
+        );
+      }
+    } finally {
+      if (mounted) {
+        setState(() => loading = false);
+      }
+    }
   }
 
   @override
@@ -40,44 +60,24 @@ class _ButlerDemoScreenState extends State<ButlerDemoScreen> {
           if (loading) const CircularProgressIndicator(),
 
           Expanded(
-  child: ListView.builder(
-    itemCount: focusList.length,
-    itemBuilder: (context, index) {
-      final focus = focusList[index];
-      final task = focus.task;
+            child: ListView.builder(
+              itemCount: focusList.length,
+              itemBuilder: (context, index) {
+                final focus = focusList[index];
+                final task = focus.task;
 
-      final isUrgent =
-          focus.reason.contains('Overdue') ||
-          focus.reason.contains('Due today');
-
-      return Card(
-        margin: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
-        child: ListTile(
-          title: Text(task.title),
-          subtitle: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Text(
-                'Importance: ${task.importance} • Mental load: ${task.mentalLoad}',
-              ),
-              const SizedBox(height: 4),
-              Text(
-                'Why: ${focus.reason}',
-                style: const TextStyle(
-                  fontStyle: FontStyle.italic,
-                  color: Colors.black54,
-                ),
-              ),
-            ],
+                return ListTile(
+                  title: Text(task.title),
+                  subtitle: Text(
+                    'Importance: ${task.importance} • Mental load: ${task.mentalLoad}',
+                  ),
+                  trailing: task.deadline != null
+                      ? const Icon(Icons.warning, color: Colors.red)
+                      : null,
+                );
+              },
+            ),
           ),
-          trailing: isUrgent
-              ? const Icon(Icons.warning, color: Colors.red)
-              : null,
-        ),
-      );
-    },
-  ),
-),
         ],
       ),
     );

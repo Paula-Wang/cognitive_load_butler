@@ -4,7 +4,6 @@ import 'package:serverpod_flutter/serverpod_flutter.dart';
 import 'package:serverpod_auth_idp_flutter/serverpod_auth_idp_flutter.dart';
 
 import 'config/app_config.dart';
-import 'screens/greetings_screen.dart';
 import 'butler_demo_screen.dart';
 
 

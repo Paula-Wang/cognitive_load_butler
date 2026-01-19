@@ -3,49 +3,78 @@ import 'package:cognitive_load_butler_client/cognitive_load_butler_client.dart';
 import 'main.dart';
 
 class ButlerDemoScreen extends StatefulWidget {
+  const ButlerDemoScreen({super.key});
+
   @override
   State<ButlerDemoScreen> createState() => _ButlerDemoScreenState();
 }
 
 class _ButlerDemoScreenState extends State<ButlerDemoScreen> {
-  List<TaskFocus> focusList = [];
+  List<Task> focusList = [];
   bool loading = false;
 
   Future<void> seedAndLoad() async {
     setState(() => loading = true);
 
-    await client.butler.seedDemoTasks();
-    final result = await client.butler.getTodayFocus();
+    try {
+      final result = await client.butler.getTodayFocus();
 
-    setState(() {
-      focusList = result;
-      loading = false;
-    });
+      if (!mounted) return;
+
+      setState(() {
+        focusList = result;
+      });
+    } catch (e, stack) {
+      debugPrint('Error loading focus: $e');
+      debugPrintStack(stackTrace: stack);
+
+      if (!mounted) return;
+
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(
+          content: Text('Failed to generate focus. Please try again.'),
+        ),
+      );
+    } finally {
+      if (mounted) {
+        setState(() => loading = false);
+      }
+    }
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text('Cognitive Load Butler')),
+      appBar: AppBar(
+        title: const Text('Cognitive Load Butler'),
+      ),
       body: Column(
         children: [
-          Padding(
-            padding: const EdgeInsets.all(16),
-            child: ElevatedButton(
-              onPressed: loading ? null : seedAndLoad,
-              child: const Text('Generate Today’s Focus'),
-            ),
+          const SizedBox(height: 24),
+
+          ElevatedButton(
+            onPressed: loading ? null : seedAndLoad,
+            child: const Text('Generate Today’s Focus'),
           ),
 
+          const SizedBox(height: 24),
+
           if (loading) const CircularProgressIndicator(),
+
+          if (!loading && focusList.isEmpty)
+            const Padding(
+              padding: EdgeInsets.all(16),
+              child: Text(
+                'Click “Generate Today’s Focus” to see your priorities.',
+                style: TextStyle(color: Colors.grey),
+              ),
+            ),
 
           Expanded(
             child: ListView.builder(
               itemCount: focusList.length,
               itemBuilder: (context, index) {
-                final focus = focusList[index];
-                final task = focus.task;
-
+                final task = focusList[index];
 
                 return ListTile(
                   title: Text(task.title),
