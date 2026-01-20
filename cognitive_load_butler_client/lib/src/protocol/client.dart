@@ -16,12 +16,11 @@ import 'package:serverpod_client/serverpod_client.dart' as _i2;
 import 'dart:async' as _i3;
 import 'package:serverpod_auth_core_client/serverpod_auth_core_client.dart'
     as _i4;
-import 'package:cognitive_load_butler_client/src/protocol/task.dart' as _i5;
 import 'package:cognitive_load_butler_client/src/protocol/task_focus.dart'
-    as _i6;
+    as _i5;
 import 'package:cognitive_load_butler_client/src/protocol/greetings/greeting.dart'
-    as _i7;
-import 'protocol.dart' as _i8;
+    as _i6;
+import 'protocol.dart' as _i7;
 
 /// By extending [EmailIdpBaseEndpoint], the email identity provider endpoints
 /// are made available on the server and enable the corresponding sign-in widget
@@ -244,36 +243,12 @@ class EndpointButler extends _i2.EndpointRef {
   @override
   String get name => 'butler';
 
-  /// Create a new task
-  _i3.Future<_i5.Task> createTask(_i5.Task task) =>
-      caller.callServerEndpoint<_i5.Task>(
-        'butler',
-        'createTask',
-        {'task': task},
-      );
-
-  /// Fetch all tasks
-  _i3.Future<List<_i5.Task>> getAllTasks() =>
-      caller.callServerEndpoint<List<_i5.Task>>(
-        'butler',
-        'getAllTasks',
-        {},
-      );
-
-  /// Ranked "Today's Focus"
-  _i3.Future<List<_i6.TaskFocus>> getTodayFocus() =>
-      caller.callServerEndpoint<List<_i6.TaskFocus>>(
+  _i3.Future<List<_i5.TaskFocus>> getTodayFocus() =>
+      caller.callServerEndpoint<List<_i5.TaskFocus>>(
         'butler',
         'getTodayFocus',
         {},
       );
-
-  /// Demo-only seed
-  _i3.Future<void> seedDemoTasks() => caller.callServerEndpoint<void>(
-    'butler',
-    'seedDemoTasks',
-    {},
-  );
 }
 
 /// This is an example endpoint that returns a greeting message through
@@ -286,8 +261,8 @@ class EndpointGreeting extends _i2.EndpointRef {
   String get name => 'greeting';
 
   /// Returns a personalized greeting message: "Hello {name}".
-  _i3.Future<_i7.Greeting> hello(String name) =>
-      caller.callServerEndpoint<_i7.Greeting>(
+  _i3.Future<_i6.Greeting> hello(String name) =>
+      caller.callServerEndpoint<_i6.Greeting>(
         'greeting',
         'hello',
         {'name': name},
@@ -325,7 +300,7 @@ class Client extends _i2.ServerpodClientShared {
     bool? disconnectStreamsOnLostInternetConnection,
   }) : super(
          host,
-         _i8.Protocol(),
+         _i7.Protocol(),
          securityContext: securityContext,
          streamingConnectionTimeout: streamingConnectionTimeout,
          connectionTimeout: connectionTimeout,

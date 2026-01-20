@@ -9,9 +9,6 @@ emailIdp:
 jwtRefresh:
   - refreshAccessToken:
 butler:
-  - createTask:
-  - getAllTasks:
   - getTodayFocus:
-  - seedDemoTasks:
 greeting:
   - hello:

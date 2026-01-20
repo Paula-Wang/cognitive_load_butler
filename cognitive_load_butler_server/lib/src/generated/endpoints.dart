@@ -15,11 +15,10 @@ import '../auth/email_idp_endpoint.dart' as _i2;
 import '../auth/jwt_refresh_endpoint.dart' as _i3;
 import '../butler/butler_endpoint.dart' as _i4;
 import '../greetings/greeting_endpoint.dart' as _i5;
-import 'package:cognitive_load_butler_server/src/generated/task.dart' as _i6;
 import 'package:serverpod_auth_idp_server/serverpod_auth_idp_server.dart'
-    as _i7;
+    as _i6;
 import 'package:serverpod_auth_core_server/serverpod_auth_core_server.dart'
-    as _i8;
+    as _i7;
 
 class Endpoints extends _i1.EndpointDispatch {
   @override
@@ -248,34 +247,6 @@ class Endpoints extends _i1.EndpointDispatch {
       name: 'butler',
       endpoint: endpoints['butler']!,
       methodConnectors: {
-        'createTask': _i1.MethodConnector(
-          name: 'createTask',
-          params: {
-            'task': _i1.ParameterDescription(
-              name: 'task',
-              type: _i1.getType<_i6.Task>(),
-              nullable: false,
-            ),
-          },
-          call:
-              (
-                _i1.Session session,
-                Map<String, dynamic> params,
-              ) async => (endpoints['butler'] as _i4.ButlerEndpoint).createTask(
-                session,
-                params['task'],
-              ),
-        ),
-        'getAllTasks': _i1.MethodConnector(
-          name: 'getAllTasks',
-          params: {},
-          call:
-              (
-                _i1.Session session,
-                Map<String, dynamic> params,
-              ) async => (endpoints['butler'] as _i4.ButlerEndpoint)
-                  .getAllTasks(session),
-        ),
         'getTodayFocus': _i1.MethodConnector(
           name: 'getTodayFocus',
           params: {},
@@ -285,16 +256,6 @@ class Endpoints extends _i1.EndpointDispatch {
                 Map<String, dynamic> params,
               ) async => (endpoints['butler'] as _i4.ButlerEndpoint)
                   .getTodayFocus(session),
-        ),
-        'seedDemoTasks': _i1.MethodConnector(
-          name: 'seedDemoTasks',
-          params: {},
-          call:
-              (
-                _i1.Session session,
-                Map<String, dynamic> params,
-              ) async => (endpoints['butler'] as _i4.ButlerEndpoint)
-                  .seedDemoTasks(session),
         ),
       },
     );
@@ -322,9 +283,9 @@ class Endpoints extends _i1.EndpointDispatch {
         ),
       },
     );
-    modules['serverpod_auth_idp'] = _i7.Endpoints()
+    modules['serverpod_auth_idp'] = _i6.Endpoints()
       ..initializeEndpoints(server);
-    modules['serverpod_auth_core'] = _i8.Endpoints()
+    modules['serverpod_auth_core'] = _i7.Endpoints()
       ..initializeEndpoints(server);
   }
 }

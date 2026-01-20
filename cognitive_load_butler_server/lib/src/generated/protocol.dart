@@ -19,9 +19,8 @@ import 'package:serverpod_auth_core_server/serverpod_auth_core_server.dart'
 import 'greetings/greeting.dart' as _i5;
 import 'task.dart' as _i6;
 import 'task_focus.dart' as _i7;
-import 'package:cognitive_load_butler_server/src/generated/task.dart' as _i8;
-import 'package:cognitive_load_butler_server/src/generated/task_focus.dart'
-    as _i9;
+import 'package:cognitive_load_butler_client/src/protocol/task_focus.dart'
+    as _i8;
 export 'greetings/greeting.dart';
 export 'task.dart';
 export 'task_focus.dart';
@@ -146,11 +145,8 @@ class Protocol extends _i1.SerializationManagerServer {
     if (t == _i1.getType<_i7.TaskFocus?>()) {
       return (data != null ? _i7.TaskFocus.fromJson(data) : null) as T;
     }
-    if (t == List<_i8.Task>) {
-      return (data as List).map((e) => deserialize<_i8.Task>(e)).toList() as T;
-    }
-    if (t == List<_i9.TaskFocus>) {
-      return (data as List).map((e) => deserialize<_i9.TaskFocus>(e)).toList()
+    if (t == List<_i8.TaskFocus>) {
+      return (data as List).map((e) => deserialize<_i8.TaskFocus>(e)).toList()
           as T;
     }
     try {
