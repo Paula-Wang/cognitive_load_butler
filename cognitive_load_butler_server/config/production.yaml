@@ -26,4 +26,6 @@ maxRequestSize: 524288
 
 sessionLogs:
   consoleEnabled: true
+  persistentEnabled: true
+  consoleLogFormat: json
 

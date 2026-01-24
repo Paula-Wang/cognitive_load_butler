@@ -17,7 +17,7 @@ import 'package:serverpod/serverpod.dart' as _i2;
 import 'dart:async' as _i3;
 import 'package:serverpod_auth_core_server/serverpod_auth_core_server.dart'
     as _i4;
-import 'package:cognitive_load_butler_client/src/protocol/task_focus.dart'
+import 'package:cognitive_load_butler_server/src/generated/task_focus.dart'
     as _i5;
 import 'package:cognitive_load_butler_server/src/generated/greetings/greeting.dart'
     as _i6;

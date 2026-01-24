@@ -32,10 +32,7 @@ void main() async {
   // allowing the server to change the API URL at runtime.
   // This ensures the app always uses the correct API URL,
   // no matter which environment it is running in.
-  final config = await AppConfig.loadConfig();
-  final serverUrl = serverUrlFromEnv.isEmpty
-      ? config.apiUrl ?? 'http://$localhost:8080/'
-      : serverUrlFromEnv;
+  const serverUrl = 'https://cognitive-load-butler-v2.api.serverpod.space/';
 
   client = Client(serverUrl)
     ..connectivityMonitor = FlutterConnectivityMonitor()

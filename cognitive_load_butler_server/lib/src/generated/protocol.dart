@@ -19,7 +19,7 @@ import 'package:serverpod_auth_core_server/serverpod_auth_core_server.dart'
 import 'greetings/greeting.dart' as _i5;
 import 'task.dart' as _i6;
 import 'task_focus.dart' as _i7;
-import 'package:cognitive_load_butler_client/src/protocol/task_focus.dart'
+import 'package:cognitive_load_butler_server/src/generated/task_focus.dart'
     as _i8;
 export 'greetings/greeting.dart';
 export 'task.dart';
