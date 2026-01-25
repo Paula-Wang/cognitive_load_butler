@@ -44,31 +44,39 @@ class _ButlerDemoScreenState extends State<ButlerDemoScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(title: const Text('Cognitive Load Butler')),
-      body: Column(
-        children: [
-          const SizedBox(height: 24),
+   return Scaffold(
+  appBar: AppBar(
+    title: const Text('Cognitive Load Butler'),
+    centerTitle: true,
+  ),
+  body: Column(
+    children: [
+      const SizedBox(height: 16),
 
-          ElevatedButton(
-            onPressed: loading ? null : seedAndLoad,
-            child: const Text('Generate Today’s Focus'),
+      Center(
+        child: ElevatedButton(
+          onPressed: loading ? null : seedAndLoad,
+          child: const Text('Generate Today’s Focus'),
+        ),
+      ),
+
+      const SizedBox(height: 16),
+
+      if (loading) const CircularProgressIndicator(),
+
+      if (!loading && focusList.isEmpty)
+        const Padding(
+          padding: EdgeInsets.all(16),
+          child: Text(
+            'Click “Generate Today’s Focus” to see your priorities.',
+            style: TextStyle(color: Colors.grey),
           ),
+        ),
 
-          const SizedBox(height: 24),
-
-          if (loading) const CircularProgressIndicator(),
-
-          if (!loading && focusList.isEmpty)
-            const Padding(
-              padding: EdgeInsets.all(16),
-              child: Text(
-                'Click “Generate Today’s Focus” to see your priorities.',
-                style: TextStyle(color: Colors.grey),
-              ),
-            ),
-
-          Expanded(
+      Expanded(
+        child: Center(
+          child: ConstrainedBox(
+            constraints: const BoxConstraints(maxWidth: 600),
             child: ListView.builder(
               itemCount: focusList.length,
               itemBuilder: (context, index) {
@@ -81,17 +89,19 @@ class _ButlerDemoScreenState extends State<ButlerDemoScreen> {
                     '${focus.reason}\n'
                     'Importance: ${task.importance} • Mental load: ${task.mentalLoad}',
                   ),
-                  trailing: task.deadline != null
-                      ? const Icon(Icons.warning, color: Colors.red)
+                  trailing: focus.score >= 7
+                      ? const Icon(Icons.priority_high, color: Colors.red)
                       : null,
                 );
               },
             ),
           ),
-        ],
+        ),
       ),
-    );
+    ],
+  ),
+);
+
   }
 }
-
 
