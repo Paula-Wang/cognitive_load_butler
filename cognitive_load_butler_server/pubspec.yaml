@@ -31,4 +31,9 @@ serverpod:
     # Unfortunately, we can't use the `-o` flag directly because of an error
     # that happens on windows. Issue is tracked in the flutter
     # repository here: https://github.com/flutter/flutter/issues/157886
-    flutter_build: cd ../cognitive_load_butler_flutter && flutter build web --base-href /app/ --wasm && rm -rf ../cognitive_load_butler_server/web/app && mv build/web/ ../cognitive_load_butler_server/web/app
+    flutter_build: |
+      cd ../cognitive_load_butler_flutter
+      flutter build web --base-href /app/ --wasm
+      rm -rf ../cognitive_load_butler_server/web/app
+      mkdir -p ../cognitive_load_butler_server/web
+      mv build/web ../cognitive_load_butler_server/web/app
