@@ -13,4 +13,6 @@ project:
     pre_deploy:
       - "serverpod generate"
       - "serverpod run flutter_build"
+      - rm -rf ../cognitive_load_butler_server/web/app
+      - mv build/web ../cognitive_load_butler_server/web/app
     post_deploy: []
