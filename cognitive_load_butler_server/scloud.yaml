@@ -1,18 +1,8 @@
-# This file configures your Serverpod Cloud project.
-# It is automatically generated and updated by the `scloud` command.
-# 
-# Useful commands:
-# - Deploy: `scloud deploy`
-# - Get Help: `scloud help`
-#
-# For full documentation, visit: https://docs.serverpod.cloud
-
 project:
   projectId: "cognitive-load-butler-v2"
   scripts:
     pre_deploy:
       - "serverpod generate"
       - "serverpod run flutter_build"
-      - rm -rf ../cognitive_load_butler_server/web/app
-      - mv build/web ../cognitive_load_butler_server/web/app
     post_deploy: []
+
