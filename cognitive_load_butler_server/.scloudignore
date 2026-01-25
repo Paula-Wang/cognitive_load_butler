@@ -38,5 +38,8 @@ config/test.yaml
 # Opting out of ignoring web files.
 !web/**
 
+# ✅ EXPLICITLY include Flutter web output
+!web/app/**
+
 # Opting out of ignoring the .scloud directory.
 !.scloud/**
