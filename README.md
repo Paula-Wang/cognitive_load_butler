@@ -1,8 +1,10 @@
-# Cognitive Load Butler 🧠✨
+# 🧠✨ Cognitive Load Butler
 
-Cognitive Load Butler is a lightweight productivity assistant that helps users decide **what to focus on today** by balancing urgency, importance, and mental load.
+**Cognitive Load Butler** is a lightweight productivity assistant that helps users decide  
+**what to focus on today** by balancing urgency, importance, and mental load.
 
-Instead of overwhelming task lists, the app prioritizes tasks in a way that respects cognitive energy — helping users make calmer, smarter decisions about their day.
+Instead of overwhelming users with long to-do lists, the app prioritizes tasks in a way
+that respects cognitive energy — helping people make calmer, smarter decisions.
 
 ---
 
@@ -13,17 +15,18 @@ Instead of overwhelming task lists, the app prioritizes tasks in a way that resp
   - Mental load
   - Due status
 - Generates a **“Today’s Focus”** recommendation
-- Demonstrates how cognitive load can be used as a first-class signal in task prioritization
+- Demonstrates how *cognitive load* can be treated as a first-class signal in task prioritization
 
-This project is a **proof of concept** exploring how software can support mental clarity, not just productivity.
+This project is a **proof of concept** exploring how software can support *mental clarity*,
+not just productivity.
 
 ---
 
-## 🛠️ Tech Stack
+## 🛠 Tech Stack
 
-- **Flutter (Web)** – frontend UI
-- **Serverpod** – backend logic & API
-- **Dart** – shared models and logic
+- **Flutter (Web)** — frontend UI
+- **Serverpod** — backend logic & API
+- **Dart** — shared models and logic
 
 ---
 
@@ -39,19 +42,18 @@ cd cognitive_load_butler_flutter
 flutter run -d chrome
 The app will run locally in your browser.
 
-The demo uses pre-seeded data to showcase the prioritization logic.
+ℹ️ The demo uses pre-seeded data to showcase the prioritization logic.
 
 💡 Motivation
 Traditional to-do apps treat all tasks equally.
 
 Cognitive Load Butler explores a different idea:
-
 What if software helped us think more gently about what we can realistically handle today?
 
 📌 Status
 This project is a functional prototype built for a hackathon.
-Future improvements could include:
 
+Possible future improvements
 User-added tasks
 
 Persistence
