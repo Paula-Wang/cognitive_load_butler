@@ -54,11 +54,15 @@ $$Score = (Importance \times 3) - Mental Load$$
 ## 🏃 Quick Start
 
 ### 1. Start the Server
-# 1. Start the Server
 cd server
 docker-compose up --build
 dart bin/main.dart
 
-# 2. Launch the Butler (Web)
+2. Launch the Butler (Web)
+Bash
 cd cognitive_load_butler_flutter
 flutter run -d chrome
+
+<div align="center">
+Built with ❤️ for the 2026 Serverpod Butler Hackathon.
+</div>
