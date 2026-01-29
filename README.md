@@ -1,61 +1,53 @@
-# 🧠✨ Cognitive Load Butler
+🧠 Cognitive Load Butler
 
-**Cognitive Load Butler** is a lightweight productivity assistant that helps users decide  
-**what to focus on today** by balancing urgency, importance, and mental load.
+Cognitive Load Butler is a smart productivity assistant that helps users manage their Focus Budget.
 
-Instead of overwhelming users with long to-do lists, the app prioritizes tasks in a way
-that respects cognitive energy — helping people make calmer, smarter decisions.
+By balancing Importance against Mental Load, the Butler curates a focused set of high-impact tasks—helping users make progress without burnout.
 
----
+Instead of an endless to-do list, the Butler uses an algorithmic approach to determine what you should actually do right now.
 
-## 🚀 What It Does
+🚀 Key Features
+📝 Dynamic Task Management
 
-- Displays a list of tasks with:
-  - Importance
-  - Mental load
-  - Due status
-- Generates a **“Today’s Focus”** recommendation
-- Demonstrates how *cognitive load* can be treated as a first-class signal in task prioritization
+Add tasks on the fly
 
-This project is a **proof of concept** exploring how software can support *mental clarity*,
-not just productivity.
+Adjustable sliders for Importance and Mental Load
 
----
+Tasks can be removed once completed
 
-## 🛠 Tech Stack
+🧮 The “Butler” Prioritization Algorithm
 
-- **Flutter (Web)** — frontend UI
-- **Serverpod** — backend logic & API
-- **Dart** — shared models and logic
+Tasks are ranked using the formula:
 
----
+Score = (Importance × 3) − Mental Load
 
-## ▶️ Running the Project Locally
 
-### Prerequisites
-- Flutter SDK
-- Dart SDK
+This ensures:
 
-### Flutter Web
-```bash
-cd cognitive_load_butler_flutter
-flutter run -d chrome
-The app will run locally in your browser.
+High-impact tasks rise to the top
 
-ℹ️ The demo uses pre-seeded data to showcase the prioritization logic.
+Mentally draining tasks are deprioritized when necessary
 
-💡 Motivation
-Traditional to-do apps treat all tasks equally.
+🎯 Today’s High-Impact Focus
 
-Cognitive Load Butler explores a different idea:
-What if software helped us think more gently about what we can realistically handle today?
+Separates all tasks from today’s focus
 
-📌 Status
-This project is a functional prototype built for a hackathon.
+Highlights only what matters most for the day
 
-Possible future improvements
-User-added tasks
+Prevents cognitive overload from long task lists
 
-Persistence
+🔔 Native Web Notifications
 
-Personalization over time
+Proactively nudges users about high-priority tasks
+
+Celebrates task completion
+
+Implemented using the browser’s Notification API
+
+📌 Visual Prioritization
+
+High-impact tasks are pinned and visually emphasized
+
+“Sticky note” inspired UI for fast scanning
+
+Reduces visual noise and decision fatigue
