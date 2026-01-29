@@ -31,6 +31,7 @@ dependencies:
     path: ../cognitive_load_butler_client
   serverpod_flutter: 3.1.1
   serverpod_auth_idp_flutter: 3.1.1
+  universal_html: ^2.2.4
 
 dev_dependencies:
   flutter_lints: '>=3.0.0 <7.0.0'
