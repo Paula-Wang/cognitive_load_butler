@@ -1,68 +1,206 @@
-<div align="center">
+<h1 align="center">🧠 Cognitive Load Butler</h1>
 
-# 🧠✨ Cognitive Load Butler
-**"Your Personal Gentleman's Gentleman for Mental Energy Management"**
+<p align="center">
+  <em>Your personal assistant for managing mental effort, not just tasks.</em>
+</p>
 
-[![Built with Serverpod](https://img.shields.io/badge/Backend-Serverpod-blue?style=for-the-badge&logo=dart)](https://serverpod.dev)
-[![Built with Flutter](https://img.shields.io/badge/Frontend-Flutter-02569B?style=for-the-badge&logo=flutter)](https://flutter.dev)
-[![Hackathon](https://img.shields.io/badge/Hackathon-Serverpod%20Butler-orange?style=for-the-badge)](https://devpost.com)
+<hr />
 
----
+<h2>Overview</h2>
 
-### 🛡️ Guarding your Focus. Managing your Load. 
-Traditional to-do apps are digital debt. The **Cognitive Load Butler** treats your mental energy as a finite resource, acting as a buffer between you and your overwhelming backlog.
+<p>
+Cognitive Load Butler is a lightweight productivity prototype that helps users decide
+<strong>what to focus on today</strong> by balancing task importance against mental effort.
+</p>
 
-[Features](#-key-features) • [The Algorithm](#-the-butler-algorithm) • [Tech Stack](#-tech-stack) • [Quick Start](#-quick-start)
+<p>
+Instead of showing an ever-growing to-do list, the Butler applies a simple scoring model
+to surface a smaller, more realistic set of high-impact tasks — helping users pace
+themselves and avoid burnout.
+</p>
 
-</div>
+<hr />
 
----
+<h2>Key Features</h2>
 
-## 🚀 Key Features
+<ul>
+  <li>
+    <strong>Dynamic Task Management</strong><br />
+    Users can add custom tasks using sliders for <em>Importance</em> and <em>Mental Load</em>.
+  </li>
 
-* **⚡ Dynamic Task Management:** Add tasks with custom sliders for **Importance** and **Mental Load**.
-* **🎯 Today’s High-Impact Focus:** The Butler segregates your messy backlog into a curated "Top Priority" area.
-* **🔔 Native Butler Nudges:** Desktop notifications that celebrate completions and warn of high-impact tasks.
-* **📌 Visual Pinning:** Automatic highlighting of "Quick Wins"—tasks that are high importance but low mental effort.
+  <li>
+    <strong>Today’s High-Impact Focus</strong><br />
+    Tasks are reorganized into a focused view that highlights what matters most today,
+    rather than showing the entire backlog.
+  </li>
 
----
+  <li>
+    <strong>Butler Scoring Algorithm</strong><br />
+    Each task is ranked using a weighted formula that prioritizes impact while accounting
+    for cognitive cost.
+  </li>
 
-## 🧮 The Butler Algorithm
-The Butler doesn't just list tasks; he calculates their true cost to your day.
+  <li>
+    <strong>Native Web Notifications</strong><br />
+    Uses the browser’s Notification API to:
+    <ul>
+      <li>Alert users when a high-impact task requires attention</li>
+      <li>Confirm task completion when an item is finished and removed</li>
+    </ul>
+  </li>
 
-$$Score = (Importance \times 3) - Mental Load$$
+  <li>
+    <strong>Task Completion Flow</strong><br />
+    Completing a task removes it from both the task list and the focus list,
+    with immediate feedback from the Butler.
+  </li>
 
-| Score | Meaning | Visual Cue |
-| :--- | :--- | :--- |
-| **8+** | **High Impact Quick-Win** | Pinned & Green Card |
-| **1-7** | **Standard Priority** | Standard Card |
-| **< 0** | **Cognitive Drainer** | Deprioritized |
+  <li>
+    <strong>Visual Prioritization</strong><br />
+    High-impact tasks are visually emphasized using a compact “sticky note” layout
+    to reduce visual clutter and scanning time.
+  </li>
+</ul>
 
----
+<hr />
 
-## 🛠 Tech Stack
+<h2>The Butler Algorithm</h2>
 
-| Layer | Technology |
-| :--- | :--- |
-| **Frontend** | Flutter Web (Sticky Note Design System) |
-| **Backend** | Serverpod (Dart-based Backend) |
-| **APIs** | Native Web Notification API |
-| **DevOps** | Docker-compose for local Serverpod logic |
+<p>
+Rather than treating all tasks equally, the Butler assigns a score to each task:
+</p>
 
----
+<pre>
+Score = (Importance × 3) − Mental Load
+</pre>
 
-## 🏃 Quick Start
+<table border="1" cellpadding="8" cellspacing="0">
+  <thead>
+    <tr>
+      <th>Score Range</th>
+      <th>Meaning</th>
+      <th>Behavior</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>8+</td>
+      <td>High-impact, manageable effort</td>
+      <td>Pinned and highlighted in focus view</td>
+    </tr>
+    <tr>
+      <td>1–7</td>
+      <td>Standard priority</td>
+      <td>Shown normally</td>
+    </tr>
+    <tr>
+      <td>&lt; 0</td>
+      <td>High cognitive cost</td>
+      <td>De-emphasized to avoid overload</td>
+    </tr>
+  </tbody>
+</table>
 
-### 1. Start the Server
-```bash
+<hr />
+
+<h2>Design Philosophy</h2>
+
+<p>
+Most productivity tools focus on quantity: more tasks, more lists, more pressure.
+Cognitive Load Butler treats mental energy as a limited resource.
+</p>
+
+<p>
+Feedback is immediate and lightweight — actions are acknowledged,
+then cleared away to reduce cognitive clutter.
+</p>
+
+<p>
+The goal is not to do everything, but to do the right things at the right pace.
+</p>
+
+<hr />
+
+<h2>Tech Stack</h2>
+
+<table border="1" cellpadding="8" cellspacing="0">
+  <thead>
+    <tr>
+      <th>Layer</th>
+      <th>Technology</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Frontend</td>
+      <td>Flutter Web (custom compact “sticky note” UI)</td>
+    </tr>
+    <tr>
+      <td>Backend</td>
+      <td>Serverpod (Dart-based backend)</td>
+    </tr>
+    <tr>
+      <td>APIs</td>
+      <td>Browser Notification API (via universal_html)</td>
+    </tr>
+    <tr>
+      <td>DevOps</td>
+      <td>Docker Compose for local Serverpod setup</td>
+    </tr>
+  </tbody>
+</table>
+
+<hr />
+
+<h2>Running the Project Locally</h2>
+
+<h3>Prerequisites</h3>
+
+<ul>
+  <li>Flutter SDK (3.32.0+)</li>
+  <li>Serverpod CLI (3.1.1)</li>
+  <li>Docker & Docker Compose</li>
+  <li>Chrome Browser</li>
+</ul>
+
+<h3>Steps</h3>
+
+<h4>1. Start the Serverpod backend</h4>
+
+<pre>
 cd server
 docker-compose up --build
 dart bin/main.dart
-2. Launch the Butler (Web)
-Bash
+</pre>
+
+<h4>2. Run the Flutter Web client</h4>
+
+<pre>
 cd cognitive_load_butler_flutter
 flutter run -d chrome
+</pre>
 
-<div align="center">
-Built with ❤️ for the 2026 Serverpod Butler Hackathon.
-</div>
+<p>
+When prompted, allow browser notifications to enable Butler alerts.
+</p>
+
+<hr />
+
+<h2>Status</h2>
+
+<p>
+<strong>Hackathon Prototype — Complete</strong><br />
+This project is a functional MVP demonstrating:
+</p>
+
+<ul>
+  <li>Task input and prioritization logic</li>
+  <li>UI-driven focus management</li>
+  <li>Browser-level notifications</li>
+  <li>End-to-end integration between Flutter Web and Serverpod</li>
+</ul>
+
+<p align="center">
+Built with ❤️ for the 2026 Serverpod Butler Hackathon
+</p>
