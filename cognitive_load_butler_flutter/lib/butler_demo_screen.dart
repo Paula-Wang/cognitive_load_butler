@@ -52,7 +52,7 @@ class _ButlerDemoScreenState extends State<ButlerDemoScreen> {
 
     bool hasHighImpact = todayFocus.any((t) => (t.importance * 3) - t.mentalLoad >= 8);
     if (hasHighImpact) {
-      notifyUser("Master, a high-impact task requires your attention.");
+      notifyUser("A high-impact task requires your attention.");
     }
   }
 
@@ -181,7 +181,7 @@ class _ButlerDemoScreenState extends State<ButlerDemoScreen> {
                 tooltip: 'Complete Task',
                 onPressed: () {
                   // Butler praises the user
-                  notifyUser("Splendid job, Master! '${task.title}' is completed.");
+                  notifyUser("Splendid job! '${task.title}' is completed.");
                   
                   // Task vanishes from both lists
                   setState(() {
