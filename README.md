@@ -202,5 +202,5 @@ This project is a functional MVP demonstrating:
 </ul>
 
 <p align="center">
-Built with ❤️ for the 2026 Serverpod Butler Hackathon
+Built with ❤️ for the Serverpod Butler Hackathon
 </p>
